@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './game.css';
 
 function Square(props) {
@@ -117,7 +116,7 @@ class Game extends React.Component {
         'Go to game start';
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button onClick={() => this.jumpTo(move)} class='btn btn-outline-primary btn-sm'>{desc}</button>
         </li>
       );
     });
