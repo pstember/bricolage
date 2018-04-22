@@ -1,16 +1,17 @@
 import React from 'react';
+import { Row } from 'reactstrap';
 
 class Menu extends React.Component {
     render() {
         return (
-            <div className="container MyComponent">
-                <div className="jumbotron">
+            <Row className="container MyComponent">
+                <Row className="jumbotron">
                     Hello there!
           <button type="button" className="btn btn-primary">
                         Bootstrap Button!
           </button>
-                </div>
-            </div>
+                </Row>
+            </Row>
         )
     }
 }

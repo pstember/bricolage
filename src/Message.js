@@ -1,4 +1,5 @@
 import React from 'react';
+import { Row, Col, Table } from 'reactstrap';
 
 class Message extends React.Component {
     
@@ -17,7 +18,7 @@ class Message extends React.Component {
     }
 
     newValue() {
-        fetch('http://localhost:3000/messages')
+        fetch('https://bt-showcase-api.herokuapp.com/messages?limit=50')
             .then(response => response.json())
             .then(responseJson => this.setState({ messages: responseJson }));
         this.setState({
@@ -29,20 +30,25 @@ class Message extends React.Component {
     render() {
         return (
         <div>
-            <div class="row justify-content-md-center">
-                <div class="col col-9">
+            <Row className='justify-content-md-center'>
+                <Col xs="9">
+                    <img src="/img/IMI_Brandmark_CMYK.png" class="img-fluid" alt="Responsive image"/>
+                </Col>
+            </Row>            
+            <Row className="justify-content-md-center">
+                <Col xs="9">
                     Time is {this.state.curTime}
-                </div>
-            </div>
-            <div class="row justify-content-md-center">
-                <div class="col col-9">
+                </Col>
+            </Row>
+            <Row className="justify-content-md-center">
+                <Col xs="9">
                 Number of received messages: {this.state.messages.length}
-                </div>                
-            </div>
-            <div class="row justify-content-md-center">
-                <div class="col col-9">
+                </Col>                
+            </Row>
+            <Row className="justify-content-md-center">
+                <Col xs="9">
                     Messages:<br/>
-                    <table class="table">
+                    <Table striped bordered>
                         <thead>
                             <tr>
                                 <th scope="col">Channel</th>
@@ -59,9 +65,9 @@ class Message extends React.Component {
                                 </tr>
                             ))}
                         </tbody>
-                    </table>
-                </div>
-            </div>
+                    </Table>
+                </Col>
+            </Row>
         </div>
         )
     }
