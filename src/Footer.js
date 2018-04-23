@@ -5,7 +5,9 @@ function Footer(/*props*/) {
   return (
     <footer>
         <Row className='justify-content-md-center'>
-            Voilà...
+            <Col className='text-center'>
+                Voilà...
+            </Col>
         </Row>
 
     </footer>
