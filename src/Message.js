@@ -37,7 +37,7 @@ class Message extends React.Component {
             </Row>            
             <Row className="justify-content-md-center">
                 <Col xs="9">
-                    Time is {this.state.curTime}
+                    Last updated at: {this.state.curTime}
                 </Col>
             </Row>
             <Row className="justify-content-md-center">
@@ -52,7 +52,7 @@ class Message extends React.Component {
                         <thead>
                             <tr>
                                 <th scope="col">Channel</th>
-                                <th scope="col">Autor</th>
+                                <th scope="col">Author</th>
                                 <th scope="col">Message</th>
                             </tr>
                         </thead>
