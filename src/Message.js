@@ -5,22 +5,41 @@ class Message extends React.Component {
     
     constructor(){
         super();
-        this.state = {
+        this.state = {            
             messages: [],
             curTime : new Date().toLocaleString(),
         };
     }
 
+    componentWillMount() {
+        this.newValue();
+    }
+
     componentDidMount() {
         setInterval( () => {
           this.newValue()
-        },10000)
+        },parseInt(this.props.frequence)*1000)
+    }
+
+
+    getAPIURL() {
+        var base = "https://bt-showcase-api.herokuapp.com/messages?"
+        if(this.props.limit) {
+            base += "limit=" + this.props.limit + '&';
+        }
+        if(this.props.channel) {
+            base += "channel=" + this.props.channel + '&';
+        }
+        return base;
     }
 
     newValue() {
-        fetch('https://bt-showcase-api.herokuapp.com/messages?limit=50')
+        fetch(this.getAPIURL())
             .then(response => response.json())
-            .then(responseJson => this.setState({ messages: responseJson }));
+            .then(responseJson => this.setState({ 
+                count: responseJson['count'],
+                messages: responseJson['messages']
+            }));
         this.setState({
             curTime : new Date().toLocaleString()
           })
@@ -32,7 +51,7 @@ class Message extends React.Component {
         <div>
             <Row className='justify-content-md-center'>
                 <Col xs="9">
-                    <img src="/img/IMI_Brandmark_CMYK.png" class="img-fluid" alt="Responsive image"/>
+                    <img src="/img/IMI_Brandmark_CMYK.png" class="img-fluid" alt="IMImobile logo"/>
                 </Col>
             </Row>            
             <Row className="justify-content-md-center">
@@ -52,7 +71,9 @@ class Message extends React.Component {
                         <thead>
                             <tr>
                                 <th scope="col">Channel</th>
+                                <th scope="col">Direction</th>
                                 <th scope="col">Author</th>
+                                <th scope="col">Keyword</th>
                                 <th scope="col">Message</th>
                             </tr>
                         </thead>
@@ -60,7 +81,9 @@ class Message extends React.Component {
                             {this.state.messages.map((message, index) => (
                                 <tr eventKey={index}>
                                     <td >{message.channel}</td>
-                                    <td>{message.autor}</td>
+                                    <td>{message.direction}</td>
+                                    <td>{message.created_by}</td>
+                                    <td>{message.keyword}</td>
                                     <td>{message.content}</td>
                                 </tr>
                             ))}
