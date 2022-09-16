@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.1.0",
+    "bootstrap": "^4.3.1",
     "jquery": "^3.3.1",
     "node-gyp": "^3.6.2",
     "popper.js": "^1.12.9",
