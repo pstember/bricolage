@@ -7,7 +7,7 @@
     "jquery": "^3.3.1",
     "node-gyp": "^3.6.2",
     "popper.js": "^1.12.9",
-    "react": "^16.3.2",
+    "react": "^16.14.0",
     "react-dom": "^16.3.2",
     "react-scripts": "1.1.0",
     "reactstrap": "^5.0.0-beta.3",
